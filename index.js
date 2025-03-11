@@ -17,3 +17,9 @@ question = (age) => {
 let res = question(age);
 console.log(res)
 console.log(form)
+//циклы
+const order = 10;
+
+for( i = 1; i <=order; i++) {
+    console.log(i)
+}
