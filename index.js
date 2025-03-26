@@ -1,37 +1,69 @@
-// Пример использовании цикла
-let age ;
+//  Что нужно сделать:
 
-for(age = 2; age <=10; age++) {
-    (age % 2 == 0) ? console.log(age) : false
+// 1. Напиши функцию getAverage(grades), которая принимает массив оценок и возвращает среднее значение.
+
+// 2. Выведи в консоль информацию по каждому студенту:
+//    - имя
+//    - возраст
+//    - среднюю оценку
+
+// 3. Напиши функцию getTopStudent(names, grades)  
+//    Функция должна вернуть имя студента с самой высокой средней оценкой.
+let studentNames = ["Анна", "Борис", "Виктор"];
+let studentAges = [18, 20, 19];
+let studentGrades = [
+  [5, 4, 5], // Анна
+  [3, 4, 4], // Борис
+  [5, 5, 5]  // Виктор
+];
+
+const getAverage = (grades) => {
+  const result = [];
+    grades.forEach((items) => {
+      let sum = 0;
+
+      items.forEach((value) => {
+        sum = sum + value
+
+      })
+      sum = sum / items.length
+      result.push(sum)
+    })
+    return result;
 }
 
-for(age = 2; age <=10; age++) {
-    if (age % 2 == 0) {
-        console.log(age)
-    }
-}
-//Пример использовании функции:
-function checkAge(age) {
-   return (age > 18) ?  true :  confirm('Родители разрешили?');
+
+const studentInfoList = () => {
+  for(let i = 0; i < studentNames.length; i++ ){
+    const firstName = studentNames[i]; 
+    const age = studentAges[i]; // не понятно как перебрался этот массив
+    const averages = average[i];
+
+    console.log(`
+      Студент: ${firstName}
+      Возраст: ${age}
+      Средний балл: ${averages}
+      `)
   }
-
-  let res = checkAge(10);
-  console.log(res)
-
-//------------- Пример 2.--------------
-
-let min = (a,b) => {
-  return (a > b) ? b : a;
 }
 
-let results = min(2, 5);
-  console.log(results)
 
-//------------- Пример 3.--------------
-
-let pow = (x,n) => {
-    return x ** n
+const getTopStudent = (names, grades) => {
+  let firstName = 0;
+  let name = 0;
+  for(let i = 0; i < grades.length; i++ ){
+    
+    if(firstName < grades[i]){
+      firstName = grades[i];
+      name = names[i];
+    }
+  }
+ return name;
+  
 }
-let result = pow(1, 100);
-  console.log(result)
 
+const average = getAverage(studentGrades);
+console.log(average);
+studentInfoList();
+let studentResult = getTopStudent(studentNames,average);
+console.log(studentResult)
