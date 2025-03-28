@@ -1,25 +1,37 @@
-let firstName = prompt("Как вас зовут?",'');
-let surName = prompt("Какая у вас фамилия?",'');
-let age = +prompt("Сколько вам лет?",'');
+// Пример использовании цикла
+let age ;
 
-const form = {
-    name: firstName,
-    surName: surName,
-    age: age
+for(age = 2; age <=10; age++) {
+    (age % 2 == 0) ? console.log(age) : false
 }
 
-question = (age) => {
-   return (age < 18) ? "Вы несовершенно летний" : 
-          (age >= 18) ? "Вы совершеннолетний" : "Доступ разрешен";
+for(age = 2; age <=10; age++) {
+    if (age % 2 == 0) {
+        console.log(age)
+    }
+}
+//Пример использовании функции:
+function checkAge(age) {
+   return (age > 18) ?  true :  confirm('Родители разрешили?');
+  }
 
+  let res = checkAge(10);
+  console.log(res)
+
+//------------- Пример 2.--------------
+
+let min = (a,b) => {
+  return (a > b) ? b : a;
 }
 
-let res = question(age);
-console.log(res)
-console.log(form)
-//циклы
-const order = 10;
+let results = min(2, 5);
+  console.log(results)
 
-for( i = 1; i <=order; i++) {
-    console.log(i)
+//------------- Пример 3.--------------
+
+let pow = (x,n) => {
+    return x ** n
 }
+let result = pow(1, 100);
+  console.log(result)
+
