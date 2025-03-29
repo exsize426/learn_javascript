@@ -1,9 +1,19 @@
-const objectA = {
-    a: 10,
-    b: true,
+// 1 Деструктуризация
+let [newCar = 'YAZ',newColor = 'green'] = ['bmw'];
+console.log(newCar,newColor) //bmw green
+
+const dogs = ['pydel', "toi-terrier"];
+const [baffy,stella] = dogs;
+console.log(baffy) //pydel
+
+const options = {
+  title: 'Menu',
+  height: 200,
+  width: 100
 }
 
-const copy0fA = objectA
-   copy0fA.a = 20
-   objectA['isCar'] = false;
-  console.log(objectA)
+const pet = '{"cat":"snider","dog":"menny", "people": ["katya","dima"]}'
+const json = JSON.parse(pet)
+console.log(json.people[1]) 
+
+
