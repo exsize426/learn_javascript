@@ -1,25 +1,24 @@
-let firstName = prompt("Как вас зовут?",'');
-let surName = prompt("Какая у вас фамилия?",'');
-let age = +prompt("Сколько вам лет?",'');
-
-const form = {
-    name: firstName,
-    surName: surName,
-    age: age
+const calculator = {
+    add(a,b) {
+        return this.a + this.b;
+    },
+    subtract(a,b) {
+        return this.a - this.b;
+    },
+    multiply(a,b) {
+        return this.a * this.b;
+    },
+    divide(a,b) {
+        return this.a / this.b;
+    }
 }
 
-question = (age) => {
-   return (age < 18) ? "Вы несовершенно летний" : 
-          (age >= 18) ? "Вы совершеннолетний" : "Доступ разрешен";
+const numbers = {
+    a: 10,
+    b: 5
+  };
 
-}
-
-let res = question(age);
-console.log(res)
-console.log(form)
-//циклы
-const order = 10;
-
-for( i = 1; i <=order; i++) {
-    console.log(i)
-}
+  console.log(calculator.add.call(numbers))// 15
+  console.log(calculator.subtract.apply(numbers))// 5
+  const boundMultiply = calculator.divide.bind(numbers);
+  console.log(boundMultiply()) // bind нужно вызывать
