@@ -4,27 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/remember.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
-    <div onclick="alert('Вывод родителя')" class="first">
-      "Всплытие на parent"
-      <p onclick="alert('Вывод ребенка')">
-        "Всплытие на child"
-    <p>
-  </div>
-  <div class="second" style="background-color: green;">
     
-  </div>
   <div id="third">
-    Подсчет: <input type="button" value="1" id="three" data-counter> <br> <!-- перенос строки-->
-    Номер телефона: <input onkeydown="return checkPhoneKey(event.key)" placeholder="+7(ххх)ххх-хх-хх" type="tel" > <br>
+    Подсчет: <input type="button" value="0" id="three" data-counter> <br> <!-- перенос строки-->
+    Номер телефона: <input onkeydown="return checkPhoneKey(event.key)" placeholder="+7(ххх)ххх-хх-хх" type="tel" required > <br>
     
     Двойной клик: <button name="щелчок" ondblclick="return alert('Двойной клик')">Щелчок</button><br>
-    Нажатие на кнопку: <input onclick="alert('Валера пидар')" id="knopka" type="button" value="Нажми на меня"> <br>
+    Нажатие на кнопку: <input onclick="alert('Валера кун')" id="knopka" type="button" value="Нажми на меня"> <br>
     Метод onchange: <input type="text" onchange="return alert(this.value)"> <!--Метод onchange возвращает значение передоваемое в поле input-->
                     <input type="button" value="button" ><br>
-    Метод oninput:<input type="text" id="oninputNext"> oninput: <h5 id="paragraf1"></h5>
+    Метод oninput:<input type="text" id="oninputNext"> <br> oninput: <h2 id="paragraf1"></h2>
     Метод onsubmit: <form onsubmit="alert('Не отправим'); return false">
       Если нажать Enter мы отправим форму: <input type="password" value="..." size="15" maxlength="4"><br><!--size - длина поля ввода-->
       Если нажать на кнопку мы отправим форму: <input type="submit" value="Отправить">
@@ -87,7 +79,7 @@
         <option>Apartment</option>
       </select>
       <div id="valera" style=" color: blue; left: 100px; margin-left: 100px;" >
-        <h> ВАЛЕРА ПИДАРОК</h></div>
-      <script src="remember.js"></script>
+        <h> ВАЛЕРА ПРИВЕТ</h></div>
+      <script src="/dom.js"></script>
 </body>
 </html>
