@@ -1,3 +1,6 @@
+
+
+
 const elementDivRise = document.createElement("div");                       
 elementDivRise.innerHTML = `<div onclick="alert('Вывод родителя')"> 
       "Всплытие на parent"
@@ -89,14 +92,14 @@ document.addEventListener('click', (e) => {                              //
     modal.close()                                                        //
   }                                                                      //
 })
-document.querySelector("#five").addEventListener("DOMContentLoaded",ready)
-function ready(){
-    alert('DOM готов')
-}
+// document.querySelector("#five").addEventListener("DOMContentLoaded",ready)
+// function ready(){
+//     alert('DOM готов')
+// }
 
-document.addEventListener('readystatechange', () =>{                    // - - показ состояния загрузки страницы
-    alert(`DOM загружен, состояние: ${document.readyState}`)
-})
+// document.addEventListener('readystatechange', () =>{                    // - - показ состояния загрузки страницы
+//     alert(`DOM загружен, состояние: ${document.readyState}`)
+// })
 const sixP = document.querySelectorAll("p")[2]                          //
 const ranges = new Range();                                             //
     ranges.setStart(sixP,1);                                            //   --- Выделение элементов на странице в id = sixP
@@ -112,3 +115,73 @@ startSelection.addEventListener('click',() => {                         //
     document.getSelection().addRange(rangess)                           //
 })
 
+const mouseHover = document.querySelector("#fourth").firstElementChild;   //
+mouseHover.addEventListener("mouseenter", function ()  {                  //
+  this.style.backgroundColor = '#87CEFA'                                  //
+})                                                                        // --- Наведение на элемент
+                                                                          //
+mouseHover.addEventListener("mouseleave", function ()  {                  //
+  this.style.backgroundColor = '#FFFFFF'                                  //
+})
+
+const form = document.querySelector("#todo-form")
+const input = document.querySelector("#todo-input")
+const tasksList = document.querySelector("#todo-list")
+
+const tasks = [
+  {id:1, text: "Первая задача", completed: true},
+  {id:2, text: "Вторая задача", completed: false}
+]
+
+renderTasks(tasks);
+
+
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  
+  const newTasks = {
+  id: Date.now(),
+  text: input.value,
+  completed: false
+}
+
+tasks.push(newTasks)
+
+renderTasks(tasks)
+
+  console.log(tasksList)
+  input.value = ''; // очистили input
+})
+
+function taskText (taskText) {
+  const taskElement = document.createElement('li');
+  const taskTextElement = document.createElement('span');
+  taskTextElement.textContent = taskText;
+
+  const deleteBattonElement = document.createElement('button');
+  deleteBattonElement.classList.add("delete-btn")
+  deleteBattonElement.textContent = "Удалить";
+
+  taskTextElement.append(deleteBattonElement)
+  taskElement.append(taskTextElement)
+  
+  tasksList.append(taskElement)
+
+  deleteBattonElement.addEventListener('click', () => {
+    taskElement.remove()
+  })
+
+   taskTextElement.addEventListener('click', () => {
+    taskTextElement.classList.toggle("completed")
+  })
+
+}
+
+function renderTasks (tasks) {
+  tasksList.innerHTML = "";
+  tasks.map( item => {
+  taskText(item.text)
+})
+}
