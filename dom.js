@@ -155,19 +155,19 @@ renderTasks(tasks)
   input.value = ''; // очистили input
 })
 
-function taskText (taskText) {
-  const taskElement = document.createElement('li');
-  const taskTextElement = document.createElement('span');
-  taskTextElement.textContent = taskText;
+function taskText (taskText) {                                     //
+  const taskElement = document.createElement('li');                //
+  const taskTextElement = document.createElement('span');          //
+  taskTextElement.textContent = taskText;                          //
 
-  const deleteBattonElement = document.createElement('button');
-  deleteBattonElement.classList.add("delete-btn")
-  deleteBattonElement.textContent = "Удалить";
+  const deleteBattonElement = document.createElement('button');    //
+  deleteBattonElement.classList.add("delete-btn")                  //
+  deleteBattonElement.textContent = "Удалить";                     //
 
-  taskTextElement.append(deleteBattonElement)
-  taskElement.append(taskTextElement)
-  
-  tasksList.append(taskElement)
+  taskTextElement.append(deleteBattonElement)                      //
+  taskElement.append(taskTextElement)                              //  --- todo list
+      
+  tasksList.append(taskElement)                                    // 
 
   deleteBattonElement.addEventListener('click', () => {
     taskElement.remove()
