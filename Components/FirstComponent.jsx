@@ -1,5 +1,17 @@
-import React from 'react';
+import React from "react"
 
-export default function JSX ()  {
-    return <h1>"Hello JSX!"</h1>
+export default function JSX (props)  {
+    return (
+        <div>
+            <h1>
+                "Hello {props.name}"
+            </h1>
+
+            <p>
+                Время : {props.date}
+            </p>
+    </div>
+    )
+   
+
 }
