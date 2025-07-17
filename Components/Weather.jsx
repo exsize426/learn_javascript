@@ -18,6 +18,7 @@ export default function WeatherApp() {
 
     setWeatherData(data);
 
+    console.log(data)
   };
 
   const validateInput  = (value) => {
