@@ -1,22 +1,25 @@
 import React  from "react";
 import { useEffect, useState } from "react";
+import "../index.css"
 
 
 export default function LikeCounter () {
 
     const [count, setCount] = useState(0);
     // const [del, setDel] = useState(0);
-    const [answer, setAnswer] = useState(false)
+    const [answer, setAnswer] = useState(null)
 
     
 
     useEffect(() => {
         console.log("Я отрисовался")
 
-        count >= 0;
-
-        if(count > 5) {
-            setAnswer(true)
+        if(count >= 1) {
+            setAnswer("happy")
+        }else if (count < 0) {
+            setAnswer("unhappy")
+        } else {
+            setAnswer(null)
         }
 
         return () => {
@@ -33,16 +36,17 @@ export default function LikeCounter () {
 
     const handleClickDelete = (e) => {
         e.preventDefault();
-       setCount((value) => --value )
+       setCount((value) => --value  )
     }
 
     return (
         <div>
             <form>
-                <button className="">{count}</button>
-                <button className="like" onClick={handleClick}>Поставить лайк</button>
+                <button className="">{count} ♥</button>
+                <button className="heart-button" onClick={handleClick}>Поставить лайк</button>
                 <button className="dislike" onClick={handleClickDelete}>Убрать лайк</button>
-                {answer && (<p>Вы довольны на {count} лайков</p>)}
+                {answer == "happy" && (<p>Вы довольны на {count} лайков</p>)}
+                {answer == "unhappy" && (<p>Вы не довольны</p>)}
             </form>
             
         </div>

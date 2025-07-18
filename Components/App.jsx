@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FirstComponent from "../Components/FirstComponent"
 import Weather from './Weather';
 import LikeCounter from './LikeCounter';
+import Header from './Header';
 
 
 
@@ -12,6 +13,7 @@ export default function App() {
 
     return (
         <div>
+            <Header />
             <FirstComponent name = {'Dima'} date = {now.toLocaleString()}  />
             <Weather />
             <LikeCounter />
