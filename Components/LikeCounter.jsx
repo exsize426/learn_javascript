@@ -12,7 +12,7 @@ export default function LikeCounter () {
     
 
     useEffect(() => {
-        console.log("Я отрисовался")
+        document.title = `My draft ${count}` ;
 
         if(count >= 1) {
             setAnswer("happy")

@@ -2,14 +2,9 @@ import React from "react";
 import { useState } from "react";
 
 
-export default function Header () {
-    const [theme, setTheme] = useState(false)
-
-    const change = () => {
-        setTheme(!theme)
-    }
-
-    const isColor = theme ? 'grey-btn': 'blog-header';
+export default function Header (props) {
+    
+    const isColor = props.theme ? 'blue-btn': 'blog-header';
 
     return (
         <header 
@@ -18,9 +13,10 @@ export default function Header () {
             <div>
             Info
             <button 
-                onClick={change} 
+                className="button-header"
+                onClick={props.changeTheme} 
                 
-            > Put
+            > Тема
             </button>
             </div>
         
