@@ -7,9 +7,6 @@ export default function JSX (props)  {
                 "Hello {props.name}"
             </h1>
 
-            <p>
-                Время : {props.date}
-            </p>
     </div>
     )
    

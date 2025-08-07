@@ -4,6 +4,7 @@ import FirstComponent from "../Components/FirstComponent"
 import Weather from './Weather';
 import LikeCounter from './LikeCounter';
 import Header from './Header';
+import ModalSection from './ModalSection';
 
 
 
@@ -30,10 +31,11 @@ export default function App() {
 
     return (
         <div className={theme ? "grey-btn" : "blue-btn"}>
-            <Header changeTheme = {change} theme = {theme}/>
-            <FirstComponent name = {'Dima'} date = {now.toLocaleString()}  />
+            <Header changeTheme = {change} theme = {theme} date = {now.toLocaleString()}  />
+            <FirstComponent name = {'Dima'}  />
             <Weather />
             <LikeCounter />
+            <ModalSection />
         </div>
     )
 }
