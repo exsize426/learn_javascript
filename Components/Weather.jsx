@@ -1,14 +1,21 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useLayoutEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function WeatherApp() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-  const [isValid, setIsValid] = useState(false)
-  
+  const [isValid, setIsValid] = useState(false);
 
+  const ref = useRef(null);
 
-  const getWeather = async (cityName) => {
+  useEffect(() => {
+    ref.current.focus()
+
+    }, [ref])
+   
+
+ 
+   const getWeather = async (cityName) => {
     const API_KEY = 'ed5c2c5ad0514524890175244250907'; // получите на openweathermap.org
      const response = await fetch(
         `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cityName}&aqi=no`
@@ -18,8 +25,9 @@ export default function WeatherApp() {
 
     setWeatherData(data);
 
-    console.log(data)
+    
   };
+ 
 
   const validateInput  = (value) => {
     const word = value[0].toUpperCase() + value.slice(1).toLowerCase();
@@ -52,6 +60,7 @@ export default function WeatherApp() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        ref={ref}
         value={city}
         onChange={handleChange}
         placeholder="Введите город"
