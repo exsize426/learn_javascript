@@ -5,7 +5,7 @@ import ListCar from './ListCar';
 
 
 
-export default function PostList ({post, title}) {
+export default function PostList ({post, title, remove}) {
     
 
     return (
@@ -14,7 +14,7 @@ export default function PostList ({post, title}) {
                 {title}
             </h1>
             {post.map((post, index) => 
-                <ListCar number={index + 1} post={post} key={post.id} />
+                <ListCar remove={remove} number={index + 1} post={post} key={post.id} />
             )}
         </div>
     )
