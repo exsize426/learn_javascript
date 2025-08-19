@@ -7,9 +7,9 @@ export default function ComponentFormPost ({onAddPost}) {
     const addNewPost = (e) => {
         e.preventDefault();
         const newPost =  {
-            id: Date.now(),
-            title: post.title,
-            body: post.body
+           ...post,
+           id: Date.now(),
+            
         }
         onAddPost(newPost) // прокидываем новый пост в массив другого компонента
         setPost({title: '', body: ""})
