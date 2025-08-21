@@ -5,4 +5,9 @@ dialog {
     border: 1px solid #ccc;
     border-radius: 10px;
     z-index: 100;
+    
+}
+
+.modalWindow {
+    background: rgb(0,0,0, 0.5);
 }

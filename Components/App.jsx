@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useState } from 'react';
 import FirstComponent from "../Components/FirstComponent"
 import Weather from './Weather';
@@ -7,8 +7,9 @@ import Header from './Header';
 import ModalSection from './ModalSection';
 import PostCar from './PostCar';
 import ComponentFormPost from './ComponentFormPost';
-import MySelect from './Select/MySelect';
-import MyInput from './Input/MyInput';
+import MyButton from "./Button/MyButton"
+import PostFilter from './PostFilter';
+import MyModal from './MyModalWindow/MyModal';
 
 
 
@@ -20,8 +21,9 @@ export default function App() {
         {id: 2, title: "Toyota", body: "Toyota Motor Corporation – самая крупная автомобилестроительная корпорация Японии. Компания производит легковые и грузовые автомобили, а также автобусы.. Основана в мае 1937 года"},
         {id: 3, title: "Mazda", body: "Mazda Motor Corporation — японская автомобилестроительная компания, выпускающая автомобили «Мазда».  Основана в январь 1920 года"},
     ]);
-    const [selectSort, setSelectSort] = useState('');
-    const [searchQuery, setSearchQuery] = useState("")
+    const [filter, setFilter] = useState({sort: "", query: ""});
+    const [modal, setModal] = useState(false) // управляет открытием/закрытием модального окна
+    
 
     setInterval(() => setNow(new Date()), 1000)
 
@@ -40,27 +42,31 @@ export default function App() {
         }
     },[theme])
 
-    const createNewPost = (newPost) => {
+    const createNewPost = (newPost) => {     //  создает новый пост
         setPost([...post, newPost])
+        setModal(false) // меняет состояние(закрывает модалку) при создание поста
     }
 
     const removePost = (currentPost) => {
         setPost(post.filter(p => p.id !== currentPost.id))
     }
 
-    function getSortedPost () {
-        if(selectSort) {
-            return [...post].sort((a,b) => a[selectSort].localeCompare(b[selectSort])); // сортируем в select(option) посты по алфавиту
+    
+
+    const sortedPost = useMemo(() => {
+        console.log("F-ya otrabotala")
+        if(filter.sort) {
+            return [...post].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort])); // сортируем в select(option) посты по алфавиту
         }
         return post;
-    }
+    },[filter.sort, post]);
 
-    const sortedPost = getSortedPost();
+    const sortedAndSeachPost = useMemo(() => {
+       return sortedPost.filter(post => post.title.toLowerCase().includes(filter.query))
+    },[filter.query,sortedPost])
 
-    const sortPost = (sort) => {
-        setSelectSort(sort)
-        
-    }
+
+   
 
     return (
         <div className={theme ? "grey-btn" : "blue-btn"}>
@@ -75,32 +81,27 @@ export default function App() {
             <Weather />
             <LikeCounter />
             <ModalSection />
-            <ComponentFormPost 
+            <MyButton style={{marginTop: "10px"}} onClick={() => setModal(true)}>
+                Создать новую марку авто
+            </MyButton>
+            <MyModal visible={modal} setVisible={setModal}>
+                <ComponentFormPost 
                 onAddPost={createNewPost}
-            />
+                />
+            </MyModal>
+            
             <hr style={{margin: "15px"}} />
             <div>
-                <MyInput 
-                    placeholder="Поиск..."
-                    value={searchQuery}
-                    onChange={event => setSearchQuery(event.target.value)}
+                <PostFilter 
+                    filter={filter}
+                    setFilter={setFilter}
                 />
-               <MySelect 
-                    value={selectSort}
-                    onChange={sortPost}
-                    defaultValue="Сортировка"
-                    options={[
-                        {value: "title", name: "По названию"},
-                        {value: "body", name: "По описанию"}
-                    
-                    ]}
-               />
             </div>
-           {post.length !== 0                         //
+           {sortedAndSeachPost.length !== 0                         //
                 ? 
                 <PostCar                              //
                     remove={removePost} 
-                    post={sortedPost} 
+                    post={sortedAndSeachPost} 
                     title={"Список auto"}             //     условная отрисовка, если постов нет то выводим надпись, иначе отображаем посты
                 />
                 :
