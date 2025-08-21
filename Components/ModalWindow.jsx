@@ -16,7 +16,7 @@ if (open) {
 
 
 return createPortal(
-    <dialog ref={dialog} >{children}</dialog>,
+    <dialog ref={dialog} className="modalWindow" >{children}</dialog>,
     document.getElementById('modal')
 )
 

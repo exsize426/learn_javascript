@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import ModalWindow from "./ModalWindow"
+import "../Components/ModalWindow.css"
 
 export default function ModalSection () {
     const [modal, setModal] = useState(false);
