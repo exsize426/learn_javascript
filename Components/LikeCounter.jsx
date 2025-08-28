@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "../index.css"
 
 
-export default function LikeCounter () {
+export default function LikeCounter ({getLikerValue}) {
 
     const [count, setCount] = useState(0);
     // const [del, setDel] = useState(0);
@@ -32,6 +32,7 @@ export default function LikeCounter () {
     const handleClick = (e) => {
         e.preventDefault();
         setCount((value) => ++value )
+        getLikerValue(count) // -прокидывает значение в count в App, передавать или по клику или по изменению
     }
 
     const handleClickDelete = (e) => {
