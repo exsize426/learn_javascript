@@ -1,17 +1,24 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import ModalWindow from "./ModalWindow"
 import "../Components/ModalWindow.css"
 
-export default function ModalSection () {
+export default function ModalSection ({value}) {
     const [modal, setModal] = useState(false);
-    
+  
+
+    const style = useMemo(() => (
+        {
+            color: value > 1 ? "red" : "green"
+        }
+        
+    ),[value])
     function openModal () {
         setModal(true);
     }
 
     return (
         <section>
-            <h3>Modal window</h3>
+            <h3 style={style}>Modal window</h3>
             <button onClick={openModal}>Открыть окно</button>
             <ModalWindow open={modal}>
                 <h3>Объявление</h3>
