@@ -1,6 +1,6 @@
 .app {
     height: 60px;
-    background-color: rgb(44, 2, 54);
+    background-color: rgb(157, 159, 172);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -9,5 +9,5 @@
 
 a {
     text-decoration: none; 
-    color: bisque;
 }
+
