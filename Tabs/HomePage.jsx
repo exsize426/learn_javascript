@@ -4,7 +4,7 @@ import React from 'react'
 export default function HomePage() {
   return (
     <div>
-        Вы на главной странице!!! Катя с днем врача!!!
-    </div>
+        Вы на главной странице!!! 
+    </div> // это Outlet вставится в файле Layout
   )
 }

@@ -11,9 +11,9 @@ import Layout from '../Tabs/Layout'
 export default function App() {
   return (
     <>
-        <Routes>
+        <Routes> 
             <Route path='/' element={<Layout />}>
-              <Route index element={<HomePage />}></Route>
+              <Route index element={<HomePage />}></Route> 
               <Route path="posts" element={<Blog />}></Route>
               <Route path="about" element={<About />}></Route>
               <Route path="*" element={<NotFoundPage />}></Route>
@@ -22,5 +22,5 @@ export default function App() {
         </Routes>
        
     </>
-  )
+  )           // index говорит о том,что HomePage будет привязан к Route path='/'
 }

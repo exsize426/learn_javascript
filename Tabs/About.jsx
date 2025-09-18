@@ -6,6 +6,6 @@ export default function About() {
     <div>
         <h1>About us</h1>
         <p>Данный проэкт выполнен профессионалом и является учебным материалом,для закрепления лекций по React</p>
-    </div>
+    </div> // это Outlet вставится в файле Layout
   )
 }
